@@ -1,0 +1,9 @@
+<div class="row columns">
+  <button (click)="login()" *ngIf="!(user | async)?.uid">Anonymous Login</button>
+  <button (click)="logout()" *ngIf="(user | async)?.uid">Logout</button>
+
+  <input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="What is it that you do?" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
+  <div id="details-container">
+    <p *ngFor="let item of items | async"><img src="../assets/images/pin.svg">{{item.name}}</p>
+  </div>
+</div>
